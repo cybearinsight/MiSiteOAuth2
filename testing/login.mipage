@@ -1,0 +1,14 @@
+﻿:Class login : MiPageTemplate
+    ∇ Compose;url;code
+      :Access public
+     
+      Add _.h3'This is the Google Login page'
+      :If 0=⎕NC⊂'_Request.Session.OAuth'
+          Add _.h4'OAuth is not configured'   
+      :Else     
+          url←_Request.Session.OAuth.GenerateGoogleOAuth2URL     
+          Add _.A'GoogleLogin'url
+      :EndIf
+     
+    ∇
+:EndClass

@@ -1,0 +1,42 @@
+﻿:Class user : MiPageTemplate
+ ∇ Compose;URL;Params;req;a;ix;arg;dn
+   :Access public
+   Add _.h3'Userinfo from Google Contacts'
+   arg← _Request.Arguments
+   resourceName← ⊃(arg⍪'' '')[arg[;1]⍳⊂'Person';2]
+   
+   ∘∘∘
+   :if resourceName≡''
+      Add _.h4 'Person not found'
+   :else
+      :if 0<|⎕nc ⊂'_Request.Session.OAuth'
+⍝      :andif _Request.Session.OAuth.OAuthState≡'Tokens'
+          userns←_Request.Session.OAuth.GetUser resourceName 
+          :if 0≠⎕nc 'userns.names'
+          dn←Add _.h4 userns.names.displayName 
+          
+          Add _.p ('(',resourceName,')')
+          :endif
+
+          :if 0≠⎕nc 'userns.photos'
+          :andif 0<⎕nc 'dn'
+             ('src="',⊃userns.photos.url,'"') dn.Insert _.img
+          :endif
+
+
+          :if 0≠⎕nc 'userns.phoneNumbers'
+              Add _.p  (⍕userns.phoneNumbers.(formattedType canonicalForm))
+          :endif
+          :if 0≠⎕nc 'userns.organizations'
+              Add _.p  userns.organizations.name
+          :endif
+          
+          
+
+      :else 
+          Add _.h4 'Person not found'
+
+      :endif
+   :endif
+ ∇
+:EndClass

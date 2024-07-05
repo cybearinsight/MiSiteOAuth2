@@ -1,0 +1,51 @@
+body
+{
+    margin: 0;
+    overflow: auto;
+}
+
+#contentblock
+{
+    padding: 0 1em;
+    height: calc(100vh - 75px);
+    margin-top: 75px;
+    overflow: auto;
+}
+
+#banner /* Floating banner */
+{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: ButtonFace;
+    font-size: xx-large;
+    height: 75px;
+}
+
+#banner a /* Remove underlines from banner links*/
+{
+    color: Black;
+    text-decoration: none;
+}
+
+#banner img
+{
+    vertical-align: middle;
+    height: 1.5em;
+    margin: 0.5em;
+    background: white;
+}
+
+#menu
+{
+    float: right;
+    font-size: large;
+    padding: 1.5em;
+}
+
+#menu a
+{
+    padding: 0.25em;
+    margin: 0.25em;
+}
+

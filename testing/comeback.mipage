@@ -1,0 +1,12 @@
+﻿:Class comeback : MiPageTemplate
+    ∇ Compose;URL;Params;req;a;ix;arg
+      :Access public
+      Add _.h3'Authenticated be google'
+      ∘∘∘
+      _Request.Session.OAuth.SetAuthorizationCode arg←_Request.Arguments 
+      _Request.SetCookie 'OAuthCode' (⊃ arg[arg[;1]⍳⊂'code';2]) '/'   365
+      :For a :In ↓_Request.Arguments
+          Add _.p(1⊃a),': ',2⊃a
+      :EndFor
+    ∇
+:EndClass

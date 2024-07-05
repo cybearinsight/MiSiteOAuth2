@@ -1,0 +1,16 @@
+﻿:Class contacts : MiPageTemplate
+ ∇ Compose;URL;Params;req;a;ix;arg;c
+   :Access public
+   Add _.h3'My Google Account Contacts'
+   ∘∘∘ 
+
+
+   :for c :in _Request.Session.OAuth.GetMyContacts
+   Add _.A (2⊃c)('/testing/user?Person=',1⊃c)      
+   Add _.p   (1⊃c),': ',2⊃c 
+   :endfor
+ ∇ 
+ 
+ 
+
+:EndClass
